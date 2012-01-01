@@ -21,6 +21,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URLEncoder;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -210,6 +211,12 @@ public class AboutActivity extends PreferenceActivity {
 		else return true;
 	}
 
+	public static boolean isEulaAccepted(Context context) {
+		final SharedPreferences preferences = context.getSharedPreferences(PREFS_ABOUT_ACTIVITY,Context.MODE_PRIVATE);
+		return preferences.getBoolean(PREF_EULA_KEY, false);
+	}
+
+	
 	/**
 	 * Visualizza la dialog del ChangeLog se viene rilevato un cambio di verisone.
 	 * 
@@ -452,15 +459,16 @@ public class AboutActivity extends PreferenceActivity {
         	Preference preference = new Preference(this);
             preference.setTitle(titleResId);
             preference.setSummary(summaryResId);
-            preference.setIntent(new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("market://search?q=pub:%1$s", authorMarket))));
+            preference.setIntent(new Intent(Intent.ACTION_VIEW, Uri.parse(String.format("market://search?q=pub:%1$s", URLEncoder.encode(authorMarket)))));
             return preference;
         }
         else return null;
 	}
 	
 	private Preference getPreferenceFromTwitterExtra(String extra, int titleResId, int summaryResId) {
-        String url = String.format("http://www.twitter.com/%1$s", this.getIntent().getStringExtra(extra));
-        if(url!=null) {
+        String twitterUsername = this.getIntent().getStringExtra(extra);
+        if(twitterUsername!=null) {
+    		String url = String.format("http://www.twitter.com/%1$s", twitterUsername);
         	Preference preference = new Preference(this);
             preference.setTitle(titleResId);
             preference.setSummary(summaryResId);
