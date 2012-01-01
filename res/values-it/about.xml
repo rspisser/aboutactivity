@@ -25,7 +25,7 @@
     <string name="aboutactivity_license_accept">Accetta</string>
     <string name="aboutactivity_license_refuse">Rifiuta</string>
     <string name="aboutactivity_privacy">Norme sulla privacy</string>
-    <string name="aboutactivity_privacy_summary">Leggi le Norme sulla privacy</string>
+    <string name="aboutactivity_privacy_summary">Leggi le norme sulla privacy</string>
     <string name="aboutactivity_todo">Da Fare</string>
     <string name="aboutactivity_todo_summary">Leggi la lista delle cosa da fare</string>
     <string name="aboutactivity_donate">Fai una donazione</string>
@@ -36,6 +36,5 @@
     <string name="aboutactivity_authormarket_summary">Visualizza altre app!</string>
     <string name="aboutactivity_reportbug">Riporta un bug</string>
     <string name="aboutactivity_reportbug_summary">Grazie per il tuo tempo!</string>
-    
 
 </resources>
