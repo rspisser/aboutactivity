@@ -11,7 +11,9 @@
 	<string name="aboutactivity_authoremail_summary">Send mail to author</string>
 	<string name="aboutactivity_authortwitter">Twitter</string>
 	<string name="aboutactivity_authortwitter_summary">Show twitter page</string>
-	<string name="aboutactivity_readme">Read Me</string>
+	<string name="aboutactivity_authorgoogleplus">Google Plus</string>
+	<string name="aboutactivity_authorgoogleplus_summary">Show Google Plus page</string>
+		<string name="aboutactivity_readme">Read Me</string>
 	<string name="aboutactivity_readme_summary">Read the reference</string>
 	<string name="aboutactivity_faq">FAQ</string>
 	<string name="aboutactivity_faq_summary">Show app faq</string>
@@ -33,4 +35,5 @@
 	<string name="aboutactivity_authormarket_summary">Show author applications!</string>
 	<string name="aboutactivity_reportbug">Report a bug</string>
 	<string name="aboutactivity_reportbug_summary">Thank you for your time!</string>
+
 </resources>

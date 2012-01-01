@@ -59,6 +59,7 @@ public class AboutActivity extends PreferenceActivity {
 	private static final String EXTRA_AUTHOR_SITE = "EXTRA_AUTHOR_SITE";
 	private static final String EXTRA_AUTHOR_EMAIL = "EXTRA_AUTHOR_EMAIL";
 	private static final String EXTRA_AUTHOR_TWITTER = "EXTRA_AUTHOR_TWITTER";
+	private static final String EXTRA_AUTHOR_GOOGLE_PLUS = "EXTRA_AUTHOR_GOOGLE_PLUS";
 	private static final String EXTRA_DONATE_URL = "EXTRA_DONATE_URL";
 	private static final String EXTRA_REPORT_BUG_URL = "EXTRA_REPORT_BUG_URL";
 	private static final String EXTRA_SHOW_IN_MARKET = "EXTRA_SHOW_IN_MARKET";
@@ -145,6 +146,7 @@ public class AboutActivity extends PreferenceActivity {
         Preference preferenceAuthorSite = getPreferenceFromUrlExtra(EXTRA_AUTHOR_SITE, R.string.aboutactivity_authorsite, R.string.aboutactivity_authorsite_summary);
         Preference preferenceAuthorMail = getPreferenceFromMailExtra(EXTRA_AUTHOR_EMAIL, R.string.aboutactivity_authoremail, R.string.aboutactivity_authoremail_summary);
         Preference preferenceAuthorTwitter = getPreferenceFromTwitterExtra(EXTRA_AUTHOR_TWITTER, R.string.aboutactivity_authortwitter, R.string.aboutactivity_authortwitter_summary);
+        Preference preferenceAuthorGooglePlus = getPreferenceFromGooglePlusExtra(EXTRA_AUTHOR_GOOGLE_PLUS, R.string.aboutactivity_authorgoogleplus, R.string.aboutactivity_authorgoogleplus_summary);
         Preference preferenceReadme = getPreferenceFromRaw(RAW_README, R.string.aboutactivity_readme, R.string.aboutactivity_readme_summary);
         Preference preferenceFaq = getPreferenceFromRaw(RAW_FAQ, R.string.aboutactivity_faq, R.string.aboutactivity_faq_summary);
         Preference preferenceChangeLog = getPreferenceFromRaw(RAW_CHANGELOG, R.string.aboutactivity_changelog, R.string.aboutactivity_changelog_summary);
@@ -157,7 +159,7 @@ public class AboutActivity extends PreferenceActivity {
         Preference preferenceReportBug = getPreferenceFromUrlExtra(EXTRA_REPORT_BUG_URL, R.string.aboutactivity_reportbug, R.string.aboutactivity_reportbug_summary);
 
         PreferenceScreen preferenceScreen = this.getPreferenceManager().createPreferenceScreen(this);
-        addPreferenceCategory(preferenceScreen, R.string.aboutactivity_info_category, preferenceVersion, preferenceAuthorName, preferenceAuthorSite, preferenceAuthorMail, preferenceAuthorTwitter);
+        addPreferenceCategory(preferenceScreen, R.string.aboutactivity_info_category, preferenceVersion, preferenceAuthorName, preferenceAuthorSite, preferenceAuthorMail, preferenceAuthorTwitter, preferenceAuthorGooglePlus);
         addPreferenceCategory(preferenceScreen, R.string.aboutactivity_app_category, preferenceReadme, preferenceFaq, preferenceChangeLog, preferenceLicense, preferencePrivacy, preferenceTodo);
         addPreferenceCategory(preferenceScreen, R.string.aboutactivity_miscellaneous_category, preferenceDonate, preferenceMarket, preferenceAuthorMarket, preferenceReportBug);
 
@@ -315,6 +317,13 @@ public class AboutActivity extends PreferenceActivity {
 		builder.create().show();
 	}
 	
+	public static Intent getAboutActivityIntent(
+			Context context, String authorName, String authorSite, String authorMail, String twitter,
+			String donateUrl, boolean showInAndroidMarketUrl, String authorAndroidMarketName, String reportBugUrl) {
+    	return getAboutActivityIntent(context,authorName, authorSite, authorMail, twitter, donateUrl, showInAndroidMarketUrl, authorAndroidMarketName, reportBugUrl, null);
+    	
+	}
+
 	/**
 	 * Restituisce l'intent da usare per richiamare l'activity.
 	 * 
@@ -329,14 +338,16 @@ public class AboutActivity extends PreferenceActivity {
 	 * @param reportBugUrl Url per sottomettere i bug.
 	 * @return L'intent da usare per richiamare l'activity.
 	 */
+	
 	public static Intent getAboutActivityIntent(
-			Context context, String authorName, String authorSite, String authorMail, String twitter,
-			String donateUrl, boolean showInAndroidMarketUrl, String authorAndroidMarketName, String reportBugUrl) {
+			Context context, String authorName, String authorSite, String authorMail, String twitter, 
+			String donateUrl, boolean showInAndroidMarketUrl, String authorAndroidMarketName, String reportBugUrl,String googlePlus) {
     	Intent intent = new Intent(context, AboutActivity.class);
     	if(authorName!=null) intent.putExtra(AboutActivity.EXTRA_AUTHOR_NAME, authorName);
     	if(authorSite!=null) intent.putExtra(AboutActivity.EXTRA_AUTHOR_SITE, authorSite);
     	if(authorMail!=null) intent.putExtra(AboutActivity.EXTRA_AUTHOR_EMAIL, authorMail);
     	if(twitter!=null) intent.putExtra(AboutActivity.EXTRA_AUTHOR_TWITTER, twitter);
+    	if(googlePlus!=null) intent.putExtra(AboutActivity.EXTRA_AUTHOR_GOOGLE_PLUS, googlePlus);
     	if(donateUrl!=null) intent.putExtra(AboutActivity.EXTRA_DONATE_URL, donateUrl);
     	if(showInAndroidMarketUrl) intent.putExtra(AboutActivity.EXTRA_SHOW_IN_MARKET, "true");
     	if(authorAndroidMarketName!=null) intent.putExtra(AboutActivity.EXTRA_AUTHOR_MARKET_NAME, authorAndroidMarketName);
@@ -465,6 +476,19 @@ public class AboutActivity extends PreferenceActivity {
         else return null;
 	}
 	
+	private Preference getPreferenceFromGooglePlusExtra(String extra, int titleResId, int summaryResId) {
+		String googlePlusPage = this.getIntent().getStringExtra(extra);
+        if(googlePlusPage!=null) {
+            String url = String.format("https://plus.google.com/u/0/%1$s/", googlePlusPage);
+        	Preference preference = new Preference(this);
+            preference.setTitle(titleResId);
+            preference.setSummary(summaryResId);
+            preference.setIntent(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+            return preference;
+        }
+        else return null;
+	}
+
 	private Preference getPreferenceFromTwitterExtra(String extra, int titleResId, int summaryResId) {
         String twitterUsername = this.getIntent().getStringExtra(extra);
         if(twitterUsername!=null) {
