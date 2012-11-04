@@ -492,7 +492,7 @@ public class AboutActivity extends PreferenceActivity {
 			String authorAndroidMarketName, String reportBugUrl) {
 		return getAboutActivityIntent(context, authorName, authorSite,
 				authorMail, twitter, donateUrl, showInAndroidMarketUrl,
-				authorAndroidMarketName, reportBugUrl, null);
+				authorAndroidMarketName, reportBugUrl, null,null);
 
 	}
 
@@ -524,7 +524,7 @@ public class AboutActivity extends PreferenceActivity {
 			String authorName, String authorSite, String authorMail,
 			String twitter, String donateUrl, boolean showInAndroidMarketUrl,
 			String authorAndroidMarketName, String reportBugUrl,
-			String googlePlus) {
+			String googlePlus, String faceBook) {
 		Intent intent = new Intent(context, AboutActivity.class);
 		if (authorName != null)
 			intent.putExtra(AboutActivity.EXTRA_AUTHOR_NAME, authorName);
