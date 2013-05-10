@@ -482,6 +482,13 @@ public class AboutActivity extends PreferenceActivity {
 		View dialogView = createDialogView(context, filename);
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		builder.setTitle(titleResId);
+		builder.setNeutralButton(android.R.string.ok,
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}
+				});
 		builder.setView(dialogView);
 		builder.create().show();
 	}
