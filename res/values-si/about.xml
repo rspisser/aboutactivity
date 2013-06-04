@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="aboutactivity_info_category">Info</string>
+	<string name="aboutactivity_app_category">Info o aplikaciji</string>
+	<string name="aboutactivity_miscellaneous_category">Razno</string>
+	<string name="aboutactivity_version">Verzija %1$s</string>
+	<string name="aboutactivity_author">Avtor</string>
+	<string name="aboutactivity_authorsite">Avtorjeva spletna stran</string>
+	<string name="aboutactivity_authorsite_summary">Obišči avtorjevo spletno stran</string>
+	<string name="aboutactivity_authoremail">Avtorjev e-mail</string>
+	<string name="aboutactivity_authoremail_summary">Pošlji e-mail avtorju</string>
+	<string name="aboutactivity_authortwitter">Twitter</string>
+	<string name="aboutactivity_authortwitter_summary">Obišči twitter stran</string>
+	<string name="aboutactivity_authorgoogleplus">Google Plus</string>
+	<string name="aboutactivity_authorgoogleplus_summary">Obišči Google Plus stran</string>
+	<string name="aboutactivity_readme">Preberi Me</string>
+	<string name="aboutactivity_readme_summary">Preberi sklic</string>
+	<string name="aboutactivity_faq">Pogosta vprašanja</string>
+	<string name="aboutactivity_faq_summary">Prikaži pogosta vprašanja</string>
+	<string name="aboutactivity_changelog">Spremebe</string>
+	<string name="aboutactivity_changelog_summary">Prikaži zadnje spremebe aplikacije</string>
+	<string name="aboutactivity_license">Pogoji uporabe</string>
+	<string name="aboutactivity_license_summary">Preberi pogoje uporabe</string>
+	<string name="aboutactivity_license_accept">Sprejmi</string>
+	<string name="aboutactivity_license_refuse">Zavrni</string>
+	<string name="aboutactivity_privacy">Izjava o zasebnosti</string>
+	<string name="aboutactivity_privacy_summary">Preberi izjavo o zasebnosti</string>
+	<string name="aboutactivity_todo">Seznam opravil</string>
+	<string name="aboutactivity_todo_summary">Preberi seznam opravil</string>
+	<string name="aboutactivity_donate">Prispevaj</string>
+	<string name="aboutactivity_donate_summary">Hvala za podporo!</string>
+	<string name="aboutactivity_market">Trgovina Play</string>
+	<string name="aboutactivity_market_summary">Komentiraj in oceni!</string>
+	<string name="aboutactivity_authormarket">Avtorjeve aplikacije</string>
+	<string name="aboutactivity_authormarket_summary">Prikaži vse avtorjeve aplikacije!</string>
+	<string name="aboutactivity_reportbug">Prijavi napako</string>
+	<string name="aboutactivity_reportbug_summary">Hvala za vaš čas!</string>
+
+</resources>
